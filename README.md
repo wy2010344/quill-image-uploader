@@ -1,3 +1,20 @@
+
+一个fork
+
+修改成ts的模块
+
+demo@[codesandbox](https://codesandbox.io/s/optimistic-fast-mhce9z?file=/src/App.tsx)
+
+
+导入方式变为
+
+```ts
+import ImageUploader from "@wangyang2010344/quill-image-uploader";
+import "@wangyang2010344/quill-image-uploader/index.css";
+```
+
+---
+
 # Quill ImageHandler Module
 
 A module for Quill rich text editor to allow images to be uploaded to a server instead of being base64 encoded.

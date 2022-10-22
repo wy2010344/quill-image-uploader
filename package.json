@@ -1,20 +1,18 @@
 {
-    "name": "quill-image-uploader",
+    "name": "@wangyang2010344/quill-image-uploader",
     "version": "1.2.3",
     "repository": "https://github.com/noeloconnell/quill-image-uploader.git",
     "description": "A module for Quill rich text editor to allow images to be uploaded to a server instead of being base64 encoded",
-    "main": "src/quill.imageUploader.js",
-    "eslintConfig": {
-        "extends": "airbnb",
-        "env": {
-            "browser": true
-        }
-    },
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
     "scripts": {
-        "watch": "webpack --watch --progress --mode production",
-        "start": "webpack-dev-server --mode development",
-        "build": "webpack --mode production",
-        "publish": "npm publish"
+        "start": "tsdx watch",
+        "build": "tsdx build",
+        "test": "tsdx test",
+        "lint": "tsdx lint",
+        "prepare": "tsdx build",
+        "size": "size-limit",
+        "analyze": "size-limit --why"
     },
     "keywords": [
         "quill",
@@ -22,29 +20,45 @@
         "image",
         "upload"
     ],
-    "author": "",
+    "husky": {
+        "hooks": {
+            "pre-commit": "tsdx lint"
+        }
+    },
+    "prettier": {
+        "printWidth": 80,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "es5"
+    },
+    "bugs": {
+        "url": "https://github.com/wy2010344//quill-image-uploader/issues"
+    },
+    "homepage": "https://github.com/wy2010344//quill-image-uploader#readme",
+    "module": "dist//quill-image-uploader.esm.js",
+    "size-limit": [
+        {
+            "path": "dist//quill-image-uploader.cjs.production.min.js",
+            "limit": "10 KB"
+        },
+        {
+            "path": "dist//quill-image-uploader.esm.js",
+            "limit": "10 KB"
+        }
+    ],
+    "author": "wy2010344",
     "license": "MIT",
     "devDependencies": {
-        "babel-core": "6.26.3",
-        "babel-loader": "7.1.5",
-        "babel-plugin-transform-object-assign": "6.22.0",
-        "babel-preset-env": "1.7.0",
-        "css-loader": "3.5.3",
-        "eslint": "6.8.0",
-        "eslint-config-airbnb": "18.1.0",
-        "eslint-config-airbnb-base": "14.1.0",
-        "eslint-plugin-import": "2.20.2",
-        "eslint-plugin-jsx-a11y": "6.2.3",
-        "eslint-plugin-react": "7.19.0",
-        "extract-text-webpack-plugin": "^4.0.0-beta.0",
-        "jshint": "2.11.0",
-        "style-loader": "0.19.1",
-        "terser-webpack-plugin": "2.3.6",
-        "webpack": "4.43.0",
-        "webpack-cli": "3.3.11",
-        "webpack-dev-server": "3.10.3"
+        "@size-limit/preset-small-lib": "^7.0.8",
+        "@types/quill": "^2.0.9",
+        "husky": "^7.0.4",
+        "quill": "*",
+        "size-limit": "^7.0.8",
+        "tsdx": "^0.14.1",
+        "tslib": "^2.3.1",
+        "typescript": "^4.6.2"
     },
     "peerDependencies": {
-        "quill": "^1.3.7"
+        "quill": "*"
     }
 }
